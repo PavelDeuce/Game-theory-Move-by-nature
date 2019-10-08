@@ -1,0 +1,42 @@
+{
+  "name": "deuce-move-by-nature",
+  "version": "1.1.0",
+  "description": "Solution Move by nature",
+  "main": "index.js",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "moveByNature": "dist/bin/moveByNature.js"
+  },
+  "scripts": {
+    "babel-node": "babel-node",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelDeuce/Systems-analysis-methods-Move-by-nature-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PavelDeuce/Systems-analysis-methods-Move-by-nature-/issues"
+  },
+  "homepage": "https://github.com/PavelDeuce/Systems-analysis-methods-Move-by-nature-#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.18.2"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
