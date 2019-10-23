@@ -6,8 +6,18 @@ export const A = [
 ];
 export const Q = [0.214, 0.072, 0.225, 0.08, 0.113, 0.296];
 export const alpha = 0.4;
+
+export const P = [
+  [0.22, 0.24, 0.18, 0.39, 0.33, 0.14],
+  [0.18, 0.06, 0.24, 0.06, 0.07, 0.15],
+  [0.18, 0.09, 0.37, 0.08, 0.32, 0.26],
+  [0.19, 0.32, 0.11, 0.11, 0.15, 0.19],
+  [0.23, 0.29, 0.1, 0.36, 0.13, 0.26],
+];
+
 export const lines = A.length;
 export const columns = A[0].length;
+export const columnsOfP = P.length;
 
 export const getMaxValue = (array) => {
   let max = array[0];
