@@ -1,20 +1,34 @@
-export const A = [
-  [13, 15, 8, 5, 10, 14],
-  [11, 13, 5, 12, 6, 8],
-  [14, 12, 14, 11, 13, 6],
-  [11, 8, 6, 9, 14, 13],
-];
-export const Q = [0.214, 0.072, 0.225, 0.08, 0.113, 0.296];
+const fs = require('fs');
+
+const fileContentForA = fs.readFileSync('sourceDataForA.txt', 'utf8');
+const fileContentForQ = fs.readFileSync('sourceDataForQ.txt', 'utf8');
+const fileContentForP = fs.readFileSync('sourceDataForP.txt', 'utf8');
+
+const filterA = fileContentForA
+  .split('\n')
+  .filter((position) => position !== '')
+  .map((position) => position
+    .split(' ')
+    .filter((nextPos) => nextPos !== ''));
+
+const filterQ = fileContentForQ
+  .split(' ')
+  .filter((position) => position !== '')
+  .map((position) => position);
+
+const filterP = fileContentForP
+  .split('\n')
+  .filter((position) => position !== '')
+  .map((position) => position
+    .split(' ')
+    .filter((nextPos) => nextPos !== ''));
+
+
+export const A = filterA.map((str) => (str.map((value) => Number(value))));
+export const Q = filterQ.map((value) => Number(value));
+export const P = filterP.map((str) => (str.map((value) => Number(value))));
+
 export const alpha = 0.4;
-
-export const P = [
-  [0.22, 0.24, 0.18, 0.39, 0.33, 0.14],
-  [0.18, 0.06, 0.24, 0.06, 0.07, 0.15],
-  [0.18, 0.09, 0.37, 0.08, 0.32, 0.26],
-  [0.19, 0.32, 0.11, 0.11, 0.15, 0.19],
-  [0.23, 0.29, 0.1, 0.36, 0.13, 0.26],
-];
-
 export const lines = A.length;
 export const columns = A[0].length;
 export const columnsOfP = P.length;
