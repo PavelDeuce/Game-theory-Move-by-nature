@@ -4,10 +4,10 @@ In game theory a move by nature is a decision or move in an extensive form game 
 
 
 ### Install ###
-< $ npm install -g deuce-move-by-nature >
+`$ npm install -g deuce-move-by-nature`
 
 ### Launch ###
 
-< $ moveByNature >
+`$ moveByNature`
 
 >You need to enter your data in a file "sourceDataForX.txt"
