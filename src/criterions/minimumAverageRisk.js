@@ -1,9 +1,12 @@
 import {
   Q,
   R,
-  getMinValue,
   lines,
   columns,
+} from '../readingData';
+
+import {
+  getMinValue,
   getTransposedMatrix,
 } from '../utils';
 

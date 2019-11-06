@@ -1,11 +1,11 @@
 import {
   A,
   Q,
-  getMaxValue,
   lines,
   columns,
-} from '../utils';
+} from '../readingData';
 
+import { getMaxValue } from '../utils';
 
 export default () => {
   const P = new Array(A.length).fill(0);

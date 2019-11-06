@@ -1,6 +1,9 @@
 import {
   A,
   alpha,
+} from '../readingData';
+
+import {
   getMinValue,
   getMaxValue,
 } from '../utils';

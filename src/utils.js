@@ -1,38 +1,3 @@
-const fs = require('fs');
-
-const fileContentForA = fs.readFileSync('sourceDataForA.txt', 'utf8');
-const fileContentForQ = fs.readFileSync('sourceDataForQ.txt', 'utf8');
-const fileContentForP = fs.readFileSync('sourceDataForP.txt', 'utf8');
-
-const filterA = fileContentForA
-  .split('\n')
-  .filter((position) => position !== '')
-  .map((position) => position
-    .split(' ')
-    .filter((nextPos) => nextPos !== ''));
-
-const filterQ = fileContentForQ
-  .split(' ')
-  .filter((position) => position !== '')
-  .map((position) => position);
-
-const filterP = fileContentForP
-  .split('\n')
-  .filter((position) => position !== '')
-  .map((position) => position
-    .split(' ')
-    .filter((nextPos) => nextPos !== ''));
-
-
-export const A = filterA.map((str) => (str.map((value) => Number(value))));
-export const Q = filterQ.map((value) => Number(value));
-export const P = filterP.map((str) => (str.map((value) => Number(value))));
-
-export const alpha = 0.4;
-export const lines = A.length;
-export const columns = A[0].length;
-export const columnsOfP = P.length;
-
 export const getMaxValue = (array) => {
   let max = array[0];
   let key = 0;
@@ -81,5 +46,3 @@ export const getRiskMatrix = (matrix) => {
   });
   return matrix.map((str, key) => str.map((value) => max[key] - value));
 };
-
-export const R = getRiskMatrix(getTransposedMatrix(A, columns, lines));

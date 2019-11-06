@@ -1,10 +1,13 @@
 import {
   R,
+  lines,
+  columns,
+} from '../readingData';
+
+import {
   getMaxValue,
   getMinValue,
   getTransposedMatrix,
-  lines,
-  columns,
 } from '../utils';
 
 export default () => {

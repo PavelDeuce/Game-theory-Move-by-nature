@@ -13,14 +13,15 @@ export default () => {
   getGurvicCriterion();
   getLaplassCriterion();
   getMaxWinCriterion();
-
   const minimalAverageRisk = getMinRiskCriterion();
 
   console.log(`Expenses are to be less than ${minimalAverageRisk}`);
-  const C = question('Enter your expenses >: ');
+  const expenses = question('Enter your expenses >: ');
 
-  const result = (minimalAverageRisk > C) ? 'Let\'s do the experiment!' : 'The experiment is useless!';
-  console.log(result);
+  const caseOfPerfectExperiment = (minimalAverageRisk > expenses) ? 'Let\'s do the experiment!' : 'The experiment is useless!';
+  console.log(caseOfPerfectExperiment);
 
-  imperfectExperiment();
+  const result = imperfectExperiment();
+  const caseOfImperfectExperiment = (result > expenses) ? 'Let\'s do the experiment!' : 'The experiment is useless!';
+  console.log(caseOfImperfectExperiment);
 };

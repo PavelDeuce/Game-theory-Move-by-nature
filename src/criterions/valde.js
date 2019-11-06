@@ -1,5 +1,6 @@
+import { A } from '../readingData';
+
 import {
-  A,
   getMinValue,
   getMaxValue,
 } from '../utils';

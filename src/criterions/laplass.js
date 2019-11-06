@@ -1,8 +1,9 @@
 import {
   A,
   columns,
-  getMaxValue,
-} from '../utils';
+} from '../readingData';
+
+import { getMaxValue } from '../utils';
 
 
 export default () => {
