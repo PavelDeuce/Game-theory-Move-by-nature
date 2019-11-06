@@ -2,6 +2,7 @@ install:
 	npm install
 
 start:
+	make build
 	npx babel-node src/bin/moveByNature.js
 
 publish:
