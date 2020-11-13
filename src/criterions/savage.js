@@ -2,11 +2,11 @@ import {
   R,
   lines,
   columns,
-} from '../readingData';
+} from '../dataForCriterion';
 
 import {
-  getMaxValue,
-  getMinValue,
+  getMaxValueInVector,
+  getMinValueInVector,
   getTransposedMatrix,
 } from '../utils';
 
@@ -15,11 +15,9 @@ export default () => {
 
   const matrixSavage = getTransposedMatrix(R, lines, columns);
   matrixSavage.forEach((str, key) => {
-    max[key] = getMaxValue(str).max;
+    max[key] = getMaxValueInVector(str).max;
   });
 
-  console.log('Matrix of risk (R):');
-  console.log(matrixSavage);
-  console.log(`Min values of matrix R : ${max}`);
-  console.log(`Optimal strategy by Savage's criterion: A[${getMinValue(max).key}] with value ${getMinValue(max).min}\n`);
+  const savage = getMinValueInVector(max);
+  console.log(`Optimal strategy by Savage's criterion: A[${savage.key}] with value ${savage.min}\n`);
 };

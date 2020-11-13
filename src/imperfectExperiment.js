@@ -5,11 +5,11 @@ import {
   columns,
   lines,
   columnsOfP,
-} from './readingData';
+} from './dataForCriterion';
 
 import {
   getTransposedMatrix,
-  getMaxValue,
+  getMaxValueInVector,
 } from './utils';
 
 export default () => {
@@ -20,12 +20,7 @@ export default () => {
   const PBs = [];
   const Pque = [];
   const maximusOfa = new Array(columnsOfP);
-  const a = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-  ];
+  const a = new Array(lines).fill(new Array(columnsOfP).fill(0));
 
   let sumOfDenom = 0;
   let sumOfPque = 0;
@@ -45,7 +40,6 @@ export default () => {
       newQjs[s][j] = (Q[j] * newP[j][s]) / denom[s];
     }
   }
-  console.log(newQjs);
 
   for (let i = 0; i < lines; i += 1) {
     for (let s = 0; s < columnsOfP; s += 1) {
@@ -54,7 +48,6 @@ export default () => {
       }
     }
   }
-  console.log(a);
 
   for (let s = 0; s < columnsOfP; s += 1) {
     for (let j = 0; j < columns; j += 1) {
@@ -64,19 +57,14 @@ export default () => {
     sumOfPBs = 0;
   }
 
-  console.log(PBs);
-
   const transpMatrix = getTransposedMatrix(a, columnsOfP, lines);
   transpMatrix.forEach((str, key) => {
-    maximusOfa[key] = getMaxValue(str).max;
+    maximusOfa[key] = getMaxValueInVector(str).max;
   });
-  console.log(maximusOfa);
 
   for (let s = 0; s < columnsOfP; s += 1) {
     averageWinWithoutExperiment += PBs[s] * maximusOfa[s];
   }
-
-  console.log(averageWinWithoutExperiment);
 
   for (let i = 0; i < lines; i += 1) {
     for (let j = 0; j < columns; j += 1) {
@@ -86,6 +74,7 @@ export default () => {
     sumOfPque = 0;
   }
 
-  console.log(getMaxValue(Pque).max);
-  return averageWinWithoutExperiment - getMaxValue(Pque).max;
+  console.log(averageWinWithoutExperiment);
+  console.log(getMaxValueInVector(Pque).max);
+  return averageWinWithoutExperiment - getMaxValueInVector(Pque).max;
 };

@@ -1,20 +1,20 @@
 import {
   A,
   alpha,
-} from '../readingData';
+} from '../dataForCriterion';
 
 import {
-  getMinValue,
-  getMaxValue,
+  getMinValueInVector,
+  getMaxValueInVector,
 } from '../utils';
 
 export default () => {
   const H = [];
 
   A.forEach((str, key) => {
-    H[key] = (alpha * getMinValue(str).min) + ((1 - alpha) * getMaxValue(str).max);
+    H[key] = (alpha * getMinValueInVector(str).min) + ((1 - alpha) * getMaxValueInVector(str).max);
   });
 
-  console.log(`Array H for Gurvice's criterion: ${H}`);
-  console.log(`Optimal strategy by Gurvices's criterion: A[${getMaxValue(H).key}] with value ${getMaxValue(H).max}\n`);
+  const gurvic = getMaxValueInVector(H);
+  console.log(`Optimal strategy by Gurvices's criterion: A[${gurvic.key}] with value ${gurvic.max}\n`);
 };

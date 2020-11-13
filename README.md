@@ -1,4 +1,4 @@
-# Game theory: Move by nature
+# game-theory: move-by-nature
 
 [![Build Status](https://travis-ci.org/PavelDeuce/Game-theory-Move-by-nature.svg?branch=master)](https://travis-ci.org/PavelDeuce/Game-theory-Move-by-nature)
 
@@ -6,7 +6,7 @@ In game theory a move by nature is a decision or move in an extensive form game 
 
 ## Install
 
-`git clone https://github.com/PavelDeuce/Game-theory-Move-by-nature`
+`git clone https://github.com/PavelDeuce/game-theory-move-by-nature`
 
 >Enter your data in src/data
 

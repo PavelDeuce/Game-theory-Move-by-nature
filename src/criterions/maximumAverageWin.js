@@ -3,12 +3,12 @@ import {
   Q,
   lines,
   columns,
-} from '../readingData';
+} from '../dataForCriterion';
 
-import { getMaxValue } from '../utils';
+import { getMaxValueInVector } from '../utils';
 
 export default () => {
-  const P = new Array(A.length).fill(0);
+  const P = new Array(lines).fill(0);
 
   for (let i = 0; i < lines; i += 1) {
     for (let j = 0; j < columns; j += 1) {
@@ -16,6 +16,6 @@ export default () => {
     }
   }
 
-  console.log(`Multiplication A on Q : ${P}`);
-  console.log(`Optimal strategy by Maximum average win criterion: A[${getMaxValue(P).key}] with value ${getMaxValue(P).max}\n`);
+  const maximumAverageWin = getMaxValueInVector(P);
+  console.log(`Optimal strategy by Maximum average win criterion: A[${maximumAverageWin.key}] with value ${maximumAverageWin.max}\n`);
 };

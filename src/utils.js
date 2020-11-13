@@ -1,4 +1,4 @@
-export const getMaxValue = (array) => {
+const getMaxValueInVector = (array) => {
   let max = array[0];
   let key = 0;
   array.forEach((value, keys) => {
@@ -13,7 +13,7 @@ export const getMaxValue = (array) => {
   };
 };
 
-export const getMinValue = (array) => {
+const getMinValueInVector = (array) => {
   let min = array[0];
   let key = 0;
   array.forEach((value, keys) => {
@@ -28,7 +28,7 @@ export const getMinValue = (array) => {
   };
 };
 
-export const getTransposedMatrix = (matrix, linesQuantity, columnsQuantity) => {
+const getTransposedMatrix = (matrix, linesQuantity, columnsQuantity) => {
   const newArray = [];
   for (let i = 0; i < linesQuantity; i += 1) {
     newArray[i] = [];
@@ -39,10 +39,17 @@ export const getTransposedMatrix = (matrix, linesQuantity, columnsQuantity) => {
   return newArray;
 };
 
-export const getRiskMatrix = (matrix) => {
+const getRiskMatrix = (matrix) => {
   const max = [];
   matrix.forEach((str, key) => {
-    max[key] = getMaxValue(str).max;
+    max[key] = getMaxValueInVector(str).max;
   });
   return matrix.map((str, key) => str.map((value) => max[key] - value));
+};
+
+export {
+  getMinValueInVector,
+  getMaxValueInVector,
+  getTransposedMatrix,
+  getRiskMatrix,
 };

@@ -1,19 +1,18 @@
-import { A } from '../readingData';
+import { A } from '../dataForCriterion';
 
 import {
-  getMinValue,
-  getMaxValue,
+  getMinValueInVector,
+  getMaxValueInVector,
 } from '../utils';
 
 export default () => {
   const minValues = [];
 
   A.forEach((str, key) => {
-    minValues[key] = getMinValue(str).min;
+    minValues[key] = getMinValueInVector(str).min;
   });
 
-  console.log('Initial Matrix:');
-  console.log(A);
-  console.log(`Minimum matrix values : ${minValues}`);
-  console.log(`Optimal strategy by Valde's criterion : A[${getMaxValue(minValues).key}] with value ${getMaxValue(minValues).max}\n`);
+  const valde = getMaxValueInVector(minValues);
+
+  console.log(`Optimal strategy by Valde's criterion : A[${valde.key}] with value ${valde.max}\n`);
 };

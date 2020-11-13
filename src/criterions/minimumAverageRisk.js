@@ -3,10 +3,10 @@ import {
   R,
   lines,
   columns,
-} from '../readingData';
+} from '../dataForCriterion';
 
 import {
-  getMinValue,
+  getMinValueInVector,
   getTransposedMatrix,
 } from '../utils';
 
@@ -20,7 +20,7 @@ export default () => {
     }
   }
 
-  console.log(`Multiplication R on Q : ${Rque}`);
-  console.log(`Optimal strategy by Minimum average risk criterion: A[${getMinValue(Rque).key}] with value ${getMinValue(Rque).min}\n`);
-  return getMinValue(Rque).min;
+  const minimumAverageRisk = getMinValueInVector(Rque);
+  console.log(`Optimal strategy by Minimum average risk criterion: A[${minimumAverageRisk.key}] with value ${minimumAverageRisk.min}\n`);
+  return minimumAverageRisk.min;
 };
