@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/PavelDeuce/Systems-analysis-methods-Move-by-nature-#readme",
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
+    "@babel/cli": "^7.12.1",
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
