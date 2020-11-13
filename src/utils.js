@@ -1,29 +1,16 @@
-const getMaxValueInVector = (array) => {
-  let max = array[0];
+const getLimitValueInVector = (array, limit) => {
+  let limitValue = array[0];
   let key = 0;
   array.forEach((value, keys) => {
-    if (max < value) {
-      max = value;
-      key = keys;
-    }
-  });
-  return {
-    max,
-    key,
-  };
-};
+    const condition = limit === 'max' ? limitValue < value : limitValue > value;
 
-const getMinValueInVector = (array) => {
-  let min = array[0];
-  let key = 0;
-  array.forEach((value, keys) => {
-    if (min > value) {
-      min = value;
+    if (condition) {
+      limitValue = value;
       key = keys;
     }
   });
   return {
-    min,
+    limitValue,
     key,
   };
 };
@@ -42,14 +29,13 @@ const getTransposedMatrix = (matrix, linesQuantity, columnsQuantity) => {
 const getRiskMatrix = (matrix) => {
   const max = [];
   matrix.forEach((str, key) => {
-    max[key] = getMaxValueInVector(str).max;
+    max[key] = getLimitValueInVector(str, 'max').limitValue;
   });
   return matrix.map((str, key) => str.map((value) => max[key] - value));
 };
 
 export {
-  getMinValueInVector,
-  getMaxValueInVector,
+  getLimitValueInVector,
   getTransposedMatrix,
   getRiskMatrix,
 };

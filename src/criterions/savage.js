@@ -1,23 +1,14 @@
-import {
-  R,
-  lines,
-  columns,
-} from '../dataForCriterion';
-
-import {
-  getMaxValueInVector,
-  getMinValueInVector,
-  getTransposedMatrix,
-} from '../utils';
+import { R, lines, columns } from '../dataForCriterion';
+import { getLimitValueInVector, getTransposedMatrix } from '../utils';
 
 export default () => {
   const max = [];
 
   const matrixSavage = getTransposedMatrix(R, lines, columns);
   matrixSavage.forEach((str, key) => {
-    max[key] = getMaxValueInVector(str).max;
+    max[key] = getLimitValueInVector(str, 'max').limitValue;
   });
 
-  const savage = getMinValueInVector(max);
-  console.log(`Optimal strategy by Savage's criterion: A[${savage.key}] with value ${savage.min}\n`);
+  const savage = getLimitValueInVector(max, 'min');
+  console.log(`Optimal strategy by Savage's criterion: A[${savage.key}] with value ${savage.limitValue}\n`);
 };

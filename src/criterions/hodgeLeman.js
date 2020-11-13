@@ -1,9 +1,5 @@
-import {
-  alpha,
-  A,
-  Q,
-} from '../dataForCriterion';
-import { getMaxValueInVector, getMinValueInVector } from '../utils';
+import { alpha, A, Q } from '../dataForCriterion';
+import { getLimitValueInVector } from '../utils';
 
 export default () => {
   const multipleAonQ = [...A];
@@ -18,13 +14,13 @@ export default () => {
   });
 
   multipleAonQ.forEach((line) => {
-    maxByMultiple.push(getMaxValueInVector(line).max);
+    maxByMultiple.push(getLimitValueInVector(line, 'max').limitValue);
   });
 
   const leftVector = maxByMultiple.map((item) => item * alpha);
 
   A.forEach((line) => {
-    minByColumnsOfA.push(getMinValueInVector(line).min);
+    minByColumnsOfA.push(getLimitValueInVector(line, 'min').limitValue);
   });
 
   const rightVector = minByColumnsOfA.map((item) => item * (1 - alpha));
@@ -33,6 +29,6 @@ export default () => {
     resultArray[index] = leftVector[index] + rightVector[index];
   });
 
-  const hodgeLeman = getMaxValueInVector(resultArray);
-  console.log(`Optimal strategy by Hodge-Leman's criterion: A[${hodgeLeman.key}] with value ${hodgeLeman.max}\n`);
+  const hodgeLeman = getLimitValueInVector(resultArray, 'max');
+  console.log(`Optimal strategy by Hodge-Leman's criterion: A[${hodgeLeman.key}] with value ${hodgeLeman.limitValue}\n`);
 };

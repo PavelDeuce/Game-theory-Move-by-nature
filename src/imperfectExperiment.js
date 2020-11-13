@@ -6,11 +6,7 @@ import {
   lines,
   columnsOfP,
 } from './dataForCriterion';
-
-import {
-  getTransposedMatrix,
-  getMaxValueInVector,
-} from './utils';
+import { getTransposedMatrix, getLimitValueInVector } from './utils';
 
 export default () => {
   const Qjs = new Array(columns).fill(new Array(columnsOfP).fill(0));
@@ -37,8 +33,11 @@ export default () => {
 
   for (let s = 0; s < columnsOfP; s += 1) {
     for (let j = 0; j < columns; j += 1) {
+      sumOfPBs += Q[j] * P[s][j];
       newQjs[s][j] = (Q[j] * newP[j][s]) / denom[s];
     }
+    PBs.push(sumOfPBs);
+    sumOfPBs = 0;
   }
 
   for (let i = 0; i < lines; i += 1) {
@@ -49,17 +48,9 @@ export default () => {
     }
   }
 
-  for (let s = 0; s < columnsOfP; s += 1) {
-    for (let j = 0; j < columns; j += 1) {
-      sumOfPBs += Q[j] * P[s][j];
-    }
-    PBs.push(sumOfPBs);
-    sumOfPBs = 0;
-  }
-
   const transpMatrix = getTransposedMatrix(a, columnsOfP, lines);
   transpMatrix.forEach((str, key) => {
-    maximusOfa[key] = getMaxValueInVector(str).max;
+    maximusOfa[key] = getLimitValueInVector(str, 'max').limitValue;
   });
 
   for (let s = 0; s < columnsOfP; s += 1) {
@@ -75,6 +66,6 @@ export default () => {
   }
 
   console.log(averageWinWithoutExperiment);
-  console.log(getMaxValueInVector(Pque).max);
-  return averageWinWithoutExperiment - getMaxValueInVector(Pque).max;
+  console.log(getLimitValueInVector(Pque, 'max').limitValue);
+  return averageWinWithoutExperiment - getLimitValueInVector(Pque, 'max').limitValue;
 };
