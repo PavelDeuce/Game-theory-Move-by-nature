@@ -7,6 +7,7 @@ import getLaplassCriterion from './criterions/laplass';
 import getMaxWinCriterion from './criterions/maximumAverageWin';
 import getMinRiskCriterion from './criterions/minimumAverageRisk';
 import getHodgeLemanCriterion from './criterions/hodgeLeman';
+import getGermeyerCriterion from './criterions/germeyer';
 
 import imperfectExperiment from './imperfectExperiment';
 
@@ -17,6 +18,7 @@ export default () => {
   getLaplassCriterion();
   getMaxWinCriterion();
   getHodgeLemanCriterion();
+  getGermeyerCriterion();
   const minimalAverageRisk = getMinRiskCriterion();
 
   console.log(`Expenses are to be less than ${minimalAverageRisk}`);
